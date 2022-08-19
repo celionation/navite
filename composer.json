@@ -1,0 +1,55 @@
+{
+  "name": "celionatti/navite",
+  "description": "PHP Advanced OOP MVC Framework by Celionatti. Just a Slim and lite PHP framework. Easy to understand and add more dynamically to it to build a big project",
+  "keywords": [
+        "Framework",
+        "PHP",
+        "MVC",
+        "OOP"
+    ],
+  "type": "library",
+  "license": "MIT",
+  "support": {
+    "issues": "https://github.com/celionation/navite/issues",
+    "source": "https://github.com/celionation/navite",
+    "wiki": "https://github.com/celionation/navite/wiki"
+  },
+  "autoload": {
+    "psr-4": {
+      "Navite\\": ".",
+      "NaviteCore\\": "navite/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Navite\\tests\\": "tests/"
+    }
+  },
+  "authors": [
+    {
+      "name": "celio natti",
+      "email": "celionatti@gmail.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "php": "7.4.12|^8.0",
+    "ext-mbstring": "*",
+    "ext-iconv": "*",
+    "ext-pdo": "*",
+    "ext-json": "*",
+    "ext-curl": "*",
+    "ext-simplexml": "*",
+    "vlucas/phpdotenv": "^5.4",
+    "filp/whoops": "^2.14",
+    "symfony/var-dumper": "^6.1",
+    "monolog/monolog": "^3.2",
+    "symfony/http-foundation": "^6.1",
+    "symfony/console": "^6.1",
+    "phpunit/phpunit": "^9.5",
+    "psr/container": "^2.0",
+    "psr/log": "^3.0",
+    "phpmailer/phpmailer": "^6.6",
+    "fakerphp/faker": "^1.20"
+  }
+}

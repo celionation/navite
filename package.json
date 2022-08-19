@@ -1,0 +1,30 @@
+{
+    "name": "navite",
+    "version": "1.0.0",
+    "description": "A Simple MVC PHP Framework, integrated with lot of features such as Session, Cookies, Migrations, Database, Factories, Seeding, Bootstrap and Tailwind CSS",
+    "main": "index.js",
+    "scripts": {
+        "build:tailwind": "tailwindcss -i navite/resources/css/app.css -o resources/css/tailwind.css",
+        "dev:tailwind": "npx tailwindcss -i navite/resources/css/app.css -o resources/css/tailwind.css --watch",
+        "build": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/celionation/navite.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/celionation/navite/issues"
+    },
+    "homepage": "https://github.com/celionation/navite#readme",
+    "devDependencies": {
+        "autoprefixer": "^10.4.8",
+        "postcss": "^8.4.16",
+        "tailwindcss": "^3.1.8"
+    },
+    "dependencies": {
+        "@tailwindcss/forms": "^0.5.2"
+    }
+}
