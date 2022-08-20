@@ -30,7 +30,7 @@ In order to ensure that the Navite community is welcoming to all, please review 
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within Navite, please send an e-mail to Taylor Otwell via [celionatti@navite.com](mailto:celionatti@navite.com). All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within Navite, please send an e-mail to Celio Natti via [celionatti@navite.com](mailto:celionatti@navite.com). All security vulnerabilities will be promptly addressed.
 
 ## License
 
