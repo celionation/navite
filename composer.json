@@ -50,6 +50,7 @@
     "psr/container": "^2.0",
     "psr/log": "^3.0",
     "phpmailer/phpmailer": "^6.6",
-    "fakerphp/faker": "^1.20"
+    "fakerphp/faker": "^1.20",
+    "guzzlehttp/guzzle": "^7.4"
   }
 }
