@@ -9,6 +9,8 @@ use NaviteCore\Container\Container;
 use NaviteCore\Router\Router;
 use NaviteCore\Request\Request;
 use NaviteCore\Response\Response;
+use NaviteCore\Service\Provider;
+use NaviteCore\Service\ProviderInterface;
 
 class Application
 {
@@ -41,9 +43,7 @@ class Application
         $this->response = new Response();
         $this->router = new Router($this->container, $this->request, $this->response);
 
-        dump($this->request);
-        dump($this->response);
-        dump($this->request->oneParam('page'));
+        $this->container->set(ProviderInterface::class, Provider::class);
     }
 
     public function run()

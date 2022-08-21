@@ -39,4 +39,6 @@ $app->on(Application::EVENT_BEFORE_REQUEST, function(){
     
 });
 
+require dirname(__DIR__) . '/routes/web.php';
+
 $app->run();
