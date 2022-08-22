@@ -216,11 +216,23 @@ class DataMapper implements DataMapperInterface
         }
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param array $conditions
+     * @param array $parameters
+     */
     public function buildQueryParameter(array $conditions = [], array $parameters = [])
     {
         return (!empty($parameters) || !empty($conditions) ? array_merge($conditions, $parameters) : $parameters);
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param string $sqlQuery
+     * @param array $parameters
+     */
     public function persist(string $sqlQuery, array $parameters)
     {
         try {

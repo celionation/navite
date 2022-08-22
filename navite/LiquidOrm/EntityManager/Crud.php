@@ -18,30 +18,33 @@ class Crud implements CrudInterface
 
     protected string $tableSchemaId;
 
+    protected array $options;
+
     /**
      * Crud Constructor.
      */
-    public function __construct(DataMapper $dataMapper, QueryBuilder $queryBuilder, string $tableSchema, string $tableSchemaId)
+    public function __construct(DataMapper $dataMapper, QueryBuilder $queryBuilder, string $tableSchema, string $tableSchemaId, array $options = [])
     {
         $this->dataMapper = $dataMapper;
         $this->queryBuilder = $queryBuilder;
         $this->tableSchema = $tableSchema;
         $this->tableSchemaId = $tableSchemaId;
+        $this->options = $options;
     }
 
     public function getSchema(): string
     {
-        return $this->tableSchema;
+        return (string)$this->tableSchema;
     }
 
     public function getSchemaId(): string
     {
-        return $this->tableSchemaId;
+        return (string)$this->tableSchemaId;
     }
 
     public function lastId(): int
     {
-        return $this->dataMapper->getLastId();
+        return (int)$this->dataMapper->getLastId();
     }
 
     public function create(array $fields = []): bool
@@ -114,8 +117,24 @@ class Crud implements CrudInterface
         }
     }
 
-    public function rawQuery(string $rawQuery, array $conditions = [])
+    /**
+     * @inheritDoc
+     *
+     * @param string $rawQuery
+     * @param array|null $conditions
+     * @return void
+     */
+    public function rawQuery(string $rawQuery, ?array $conditions = [])
     {
-        
+        try {
+            $args = ['table' => $this->getSchema, 'type' => 'raw', 'raw' => $rawQuery, 'conditions' => $conditions];
+            $query = $this->queryBuilder->buildQuery($args)->rawQuery();
+            $this->dataMapper->persist($query, $this->dataMapper->buildQueryParameter($conditions));
+            if($this->dataMapper->rowCount()) {
+                //revisit.
+            }
+        } catch (\Throwable $e) {
+            throw $e;
+        }
     }
 }

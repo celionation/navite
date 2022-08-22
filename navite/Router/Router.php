@@ -10,6 +10,7 @@ use NaviteCore\Container\Container;
 use NaviteCore\Error\Errors;
 use NaviteCore\Request\Request;
 use NaviteCore\Response\Response;
+use NaviteCore\Router\Exception\RouterBadMethodCallException;
 use \NaviteCore\Router\RouterInterface;
 
 class Router implements RouterInterface
@@ -94,7 +95,7 @@ class Router implements RouterInterface
             $callback = $this->getCallback();
 
             if ($callback === false) {
-                throw new Exception(Errors::get('1001'), 1001);
+                throw new RouterBadMethodCallException(Errors::get('1001'), 1001);
             }
         }
         if (is_string($callback)) {
