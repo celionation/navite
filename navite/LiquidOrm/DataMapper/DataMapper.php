@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace NaviteCore\LiquidOrm\DataMapper;
 
+use PDO;
+use Throwable;
+use PDOStatement;
 use NaviteCore\Database\DatabaseInterface;
 use NaviteCore\LiquidOrm\DataMapper\Exception\DataMapperException;
-use PDO;
-use PDOStatement;
 
 class DataMapper implements DataMapperInterface
 {
@@ -151,11 +152,12 @@ class DataMapper implements DataMapperInterface
      *
      * @return void
      */
-    public function execute(): void
+    public function execute()
     {
-        if($this->statement) {
-            $this->statement->execute();
-        }
+        if($this->statement) return $this->statement->execute();
+        // if($this->statement) {
+        //     return $this->statement->execute();
+        // }
     }
 
     /**
@@ -209,8 +211,22 @@ class DataMapper implements DataMapperInterface
                     return intval($lastId);
                 }
             }
-        } catch (\Throwable $e) {
+        } catch (Throwable $e) {
             throw $e;
+        }
+    }
+
+    public function buildQueryParameter(array $conditions = [], array $parameters = [])
+    {
+        return (!empty($parameters) || !empty($conditions) ? array_merge($conditions, $parameters) : $parameters);
+    }
+
+    public function persist(string $sqlQuery, array $parameters)
+    {
+        try {
+            return $this->prepare($sqlQuery)->bindParameters($parameters)->execute();
+        } catch (Throwable $e) {
+            throw  $e;
         }
     }
 }

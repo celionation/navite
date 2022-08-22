@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use Navite\app\Controllers\SiteController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,4 +15,4 @@ declare(strict_types=1);
 |
 */
 
-$app->router->get();
+$app->router->get('/', [SiteController::class, 'index']);

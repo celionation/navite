@@ -31,6 +31,7 @@ class Application
     public Router $router;
     public Request $request;
     public Response $response;
+    // public ?Controller $controller = null;
     protected Container $container;
 
     public function __construct(Container $container, $rootDir)

@@ -27,7 +27,7 @@ interface DataMapperInterface
      *
      * @param array $value
      * @param boolean $isSearch
-     * @return void
+     * @return self
      */
     public function bindParameters(array $fields, bool $isSearch = false): self;
 
@@ -43,7 +43,7 @@ interface DataMapperInterface
      *
      * @return void
      */
-    public function execute(): void;
+    public function execute();
 
     /**
      * Undocumented function

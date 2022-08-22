@@ -6,5 +6,8 @@ namespace Navite\app\Controllers;
 
 class SiteController
 {
-    
+    public function index()
+    {
+        echo 'SiteController';
+    }
 }

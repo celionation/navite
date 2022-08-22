@@ -1,9 +1,0 @@
-driver:
-  mysql:
-    dsn: 'mysql:localhost'
-    username: 'test'
-    password: 'root'
-  pgsql:
-    dsn: 'pgsql:localhost'
-    username: 'test'
-    password: 'root'
