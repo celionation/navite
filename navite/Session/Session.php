@@ -18,6 +18,13 @@ class Session implements SessionInterface
 
     protected const SESSION_PATTERN = "/^[a-zA-Z0-9_\.](1,64)$/";
 
+    /**
+     * Session Constructor.
+     *
+     * @param string $sessionName
+     * @param SessionStorageInterface|null $storage
+     * @throws SessionInvalidArguementException
+     */
     public function __construct(string $sessionName, SessionStorageInterface $storage = null)
     {
         if($this->isSessionKeyValid($sessionName) === false) {
@@ -27,6 +34,14 @@ class Session implements SessionInterface
         $this->storage = $storage;
     }
 
+    /**
+     * @inheritDoc
+     *
+     * @param string $key
+     * @param mixed $value
+     * @return void
+     * @throws SessionException
+     */
     public function set(string $key, $value): void
     {
         $this->ensureSessionKeyIsValid($key);
@@ -37,6 +52,14 @@ class Session implements SessionInterface
         }
     }
 
+    /**
+     * @inheritDoc
+     *
+     * @param string $key
+     * @param mixed $value
+     * @return void
+     * @throws SessionException
+     */
     public function setArray(string $key, $value): void
     {
         $this->ensureSessionKeyIsValid($key);
@@ -47,6 +70,14 @@ class Session implements SessionInterface
         }
     }
 
+    /**
+     * @inheritDoc
+     *
+     * @param string $key
+     * @param mixed $default
+     * @return void
+     * @throws SessionException
+     */
     public function get(string $key, $default = null)
     {
         $this->ensureSessionKeyIsValid($key);
@@ -57,22 +88,43 @@ class Session implements SessionInterface
         }
     }
 
+    /**
+     * @inheritDoc
+     *
+     * @param string $key
+     * @return boolean
+     * @throws SessionException
+     */
     public function delete(string $key): bool
     {
         $this->ensureSessionKeyIsValid($key);
         try {
-            return $this->storage->deleteSession($key);
+            $this->storage->deleteSession($key);
         } catch (Throwable $e) {
             throw new SessionException("An Exception was thrown in retrieving the key from session storage. " . $e);
         }
+        return true;
     }
 
+    /**
+     * @inheritDoc
+     *
+     * @return void
+     */
     public function invalidate(): void
     {
         $this->storage->invalidate();
     }
 
-    public function flush(string $key, $value)
+    /**
+     * @inheritDoc
+     *
+     * @param string $key
+     * @param [type] $value
+     * @return void
+     * @throws SessionException
+     */
+    public function flush(string $key, $value = null)
     {
         $this->ensureSessionKeyIsValid($key);
         try {
@@ -82,6 +134,12 @@ class Session implements SessionInterface
         }
     }
 
+    /**
+     * @inheritDoc
+     *
+     * @param string $key
+     * @return boolean
+     */
     public function has(string $key): bool
     {
         $this->ensureSessionKeyIsValid($key);

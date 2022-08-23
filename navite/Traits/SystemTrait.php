@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace NaviteCore\Traits;
 
-use NaviteCore\Base\Exception\BaseLogicException;
-use NaviteCore\Global\GlobalManager;
 use NaviteCore\Session\SessionManager;
+use NaviteCore\GlobalManager\GlobalManager;
+use NaviteCore\Base\Exception\BaseLogicException;
 
 trait SystemTrait
 {

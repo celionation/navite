@@ -16,6 +16,13 @@ class YamlConfig
         }
     }
 
+    /**
+     * Load a Yaml configuration
+     *
+     * @param string $yamlFile
+     * @return void
+     * @throws ParseException
+     */
     public function getYaml(string $yamlFile)
     {
         foreach(glob(CONFIG_PATH . DS . "*.yaml") as $file) {
@@ -23,11 +30,16 @@ class YamlConfig
             $parts = parse_url($file);
             $path = $parts['path'];
             if(strpos($path, $yamlFile) !== false) {
-                return Yaml::parseFile($yamlFile);
+                return Yaml::parseFile($file);
             }
         }
     }
 
+    /**
+     * Load a Yaml configuration into the yaml parser
+     *
+     * @param string $yamlFile
+     */
     public static function file(string $yamlFile)
     {
         return (new YamlConfig)->getYaml($yamlFile);

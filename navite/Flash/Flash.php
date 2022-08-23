@@ -6,7 +6,7 @@ namespace NaviteCore\Flash;
 
 use NaviteCore\Flash\FlashTypes;
 use NaviteCore\Flash\FlashInterface;
-use NaviteCore\Global\GlobalManager;
+use NaviteCore\GlobalManager\GlobalManager;
 
 class Flash implements FlashInterface
 {

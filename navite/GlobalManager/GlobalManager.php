@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
-namespace NaviteCore\Global;
+namespace NaviteCore\GlobalManager;
 
 use Throwable;
 use NaviteCore\GlobalManager\GlobalManagerInterface;
 use NaviteCore\GlobalManager\Exception\GlobalManagerException;
 use NaviteCore\GlobalManager\Exception\GlobalManagerInvalidArguementException;
+
 
 class GlobalManager implements GlobalManagerInterface
 {
